@@ -6,6 +6,8 @@ python学习笔记
  `>>>len("python")`
 `6`
 在python shell 下是交互环境，默认自己支持输出。
+
+
 `print(len("python"))`
 模块中，需要用print 语句输出结果。
  2. 基本元素
