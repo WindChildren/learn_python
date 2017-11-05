@@ -11,14 +11,13 @@ python学习笔记
  2. 基本元素
 Python里所有数据都是以对象形式存在的。
 内置数据类型包括：
-布尔型（仅包括True和False两种取值）
+* 布尔型（仅包括True和False两种取值）
 
-整型（整数，如42）
+* 整型（整数，如42）
 
-浮点型（小数，或用科学计数法表示的数字，例如1.0e8，它表示1乘以10的8次方）
+* 浮点型（小数，或用科学计数法表示的数字，例如1.0e8，它表示1乘以10的8次方）
 
-字符串型（字符组成的序列）。
-
+* 字符串型（字符组成的序列）。
 	1. type( thing )
 	`print(type(3))`
 	得到输出
@@ -99,5 +98,4 @@ Python里所有数据都是以对象形式存在的。
 	`print(','.join(tools_list))`
 	`get gloves, get mask, give cat vitamins, call ambulance`
 	其他字符函数详见标准文档[1] : (https://docs.python.org/3/library/stdtypes.html#string-methods)
-	## 第二章
 	
