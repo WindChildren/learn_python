@@ -37,13 +37,45 @@ Python里所有数据都是以对象形式存在的。
 	* 0o 或 0O 代表八进制
 	* 0x 或 0X 代表十六进制
 	5. 类型转换
-	6. 使用int()函数将其他数据类型转换为整数，小数点后的会被舍去，无法将与数字无关的数据转换为整型。
+	使用int()函数将其他数据类型转换为整数，小数点后的会被舍去，无法将与数字无关的数据转换为整型。
+	使用str()将数据类型转换为字符串。
 	在使用不同数字类型进行计算的时候，python会自动进行类型转换。
 	Python可以处理超大型数据而不会报错。
-	7. 数学函数
-	8. 使用引号创建
+	6. 数学函数
+	7. 使用引号创建
 	可以使用连续三个单引号或者双引号创建字符串，三元引号多用于创建多行的字符串。
 	```
 	>>>poem = ''' There was a Young Lady of Norway,
 	... Who casually sat in a doorway;'''
 	```
+	8. 基本方法和符号的使用
+	* 使用\转义
+	字符前面添加\会使该字符的意义发生改变，如：\n, 有时会用到 \' 和 \" 来表示单、双引号。
+	`>>>testimony = "\" I did nothing! \" he said. \" Not that either! Or the other thing.\" "` 
+	`>>>print(testimony)`
+	`" I did nothing! " he said. "Not that either! Or the other thing." `
+	如需要输出一个\,连续输入两个\\即可
+	* 使用+拼接
+	* 使用*复制
+	`start = 'Na' * 4` 
+	`print(start)`
+	`Na Na Na Na`
+	* 使用[]提取字符
+	`>>>letters = 'abcdefghijklmnopqrstuvwxyz'`
+	`letters[0]`
+	`'a'`
+	* 使用[start：end：step]分片
+	从start提取到end - 1, 每step个字符提取一个
+	* 使用len()获得长度
+	* 使用split()分割
+	`tools = 'get gloves, get mask, give cat vitamins, call ambulance'`
+	`print(tools.split(','))`
+	`['get gloves', ' get mask', ' give cat vitamins', ' call ambulance']`
+	若不指定分隔符，split()默认使用空白字符——换行符、空格、制表符
+	* 使用join()合并
+	`tools_list = ['get gloves', ' get mask', ' give cat vitamins', ' call ambulance']`
+	`print(','.join(tools_list))`
+	`get gloves, get mask, give cat vitamins, call ambulance`
+	其他字符函数详见标准文档[1] : (https://docs.python.org/3/library/stdtypes.html#string-methods)
+	## 第二章
+	
