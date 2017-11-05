@@ -57,20 +57,27 @@ Python里所有数据都是以对象形式存在的。
 	如需要输出一个\,连续输入两个\\即可
 	* 使用+拼接
 	* 使用*复制
+	
 	`start = 'Na' * 4` 
 	`print(start)`
 	`Na Na Na Na`
 	* 使用[]提取字符
+	
 	`>>>letters = 'abcdefghijklmnopqrstuvwxyz'`
+	
 	`letters[0]`
+	
 	`'a'`
 	* 使用[start：end：step]分片
 	从start提取到end - 1, 每step个字符提取一个
 	* 使用len()获得长度
 	* 使用split()分割
 	`tools = 'get gloves, get mask, give cat vitamins, call ambulance'`
+	
 	`print(tools.split(','))`
+	
 	`['get gloves', ' get mask', ' give cat vitamins', ' call ambulance']`
+	
 	若不指定分隔符，split()默认使用空白字符——换行符、空格、制表符
 	* 使用join()合并
 	`tools_list = ['get gloves', ' get mask', ' give cat vitamins', ' call ambulance']`
