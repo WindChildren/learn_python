@@ -160,6 +160,7 @@ Python里所有数据都是以对象形式存在的。
 
 ```
 >>> another_empty_list = list()
+
 >>> another_empty_list
 
 []
