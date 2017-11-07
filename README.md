@@ -348,3 +348,83 @@ marxes = ['Groucho', 'Chico', 'Harpo']
 print(marxes.count('Chico'))
 ```
 
+* 使用join()转换为字符串
+
+```
+marxes = ['Groucho', 'Chico', 'Harpo']
+
+print(','.join(marxes))
+
+Groucho,Chico,Harpo
+
+```
+* 使用sort()重新排列元素
+	* 列表方法sort()会对原列表进行排序，改变原列表内容。
+	* 通过函数sorted()则会返回排序好的列表副本，原列表内容不改变。
+
+```
+
+marxes = ['Groucho', 'Chico', 'Harpo']
+
+print(sorted(marxes))
+
+print(marxes)
+
+['Chico', 'Groucho', 'Harpo']
+
+['Groucho', 'Chico', 'Harpo']
+```
+
+如果列表中的元素都是数字，它们会默认被排列成从小到大的升序。如果元素都是字符串，则会按照字母表的顺序排列。通过参数reverse=True可以改变为降序排列。
+```
+
+numbers = [2, 1, 3, 4.0]
+
+numbers.sort(reverse=True)
+
+print(numbers)
+```
+
+* 使用len()获取长度
+* 使用=赋值，使用copy()复制
+
+```
+a = [1, 2, 3]
+
+b = a
+
+a[0] = 'surprise'
+
+print(b)  #a, b 指向的是同一个对象
+
+['surprise', 2, 3]
+```
+
+* 通过下列任意方法，都可以将值复制到另一个新的列表中：
+	* 列表copy()函数
+	* list()转换函数
+	* 列表分片[:]
+
+```
+a = [1, 2, 3]
+
+b = a.copy()
+
+c = list(a)
+
+d = a[:]
+
+print('', a, '\n',b, '\n', c,'\n', d)
+
+
+ [1, 2, 3] 
+ 
+ [1, 2, 3] 
+ 
+ [1, 2, 3] 
+ 
+ [1, 2, 3]
+ 
+```
+
+在这个例子中，b，c，d都是a的复制：它们都是带有值的新对象，改变a的值，不影响b,c,d
