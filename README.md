@@ -151,4 +151,30 @@ Python里所有数据都是以对象形式存在的。
 	其他字符函数详见标准文档[1] : (https://docs.python.org/3/library/stdtypes.html#string-methods)
 	
 ## 第二章
+
+1. Python序列结构：字符串、元组和列表。
+
+2. Python容器：列表、元组、字典与集合。
+
+3. 列表创建：使用[]或者list()
+
+```
+>>> another_empty_list = list()
+>>> another_empty_list
+
+[]
+```
+
+列表有顺序，允许列表中的值重复。
+
+使用list()可以将其他数据类型转换成列表
+
+字符串转换为列表：`print(list('cat'))   ['c', 'a', 't']`
+
+元组转换为列表：
+```
+a_tuple = ('ready', 'file', 'aim')
+
+print(list(a_tuple))
+```
 	
