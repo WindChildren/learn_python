@@ -166,11 +166,17 @@ Python里所有数据都是以对象形式存在的。
 []
 ```
 
-列表有顺序，允许列表中的值重复。
+* 列表有顺序，允许列表中的值重复。
 
-使用list()可以将其他数据类型转换成列表
+* 使用list()可以将其他数据类型转换成列表
 
-字符串转换为列表：`print(list('cat'))   ['c', 'a', 't']`
+字符串转换为列表：
+
+```
+print(list('cat'))
+
+['c', 'a', 't']
+```
 
 元组转换为列表：
 ```
@@ -178,4 +184,167 @@ a_tuple = ('ready', 'file', 'aim')
 
 print(list(a_tuple))
 ```
-	
+
+* 使用split()可以依据分隔符将字符串切割成若干个字串组成的列表
+
+* 使用[offset]修改和获取元素
+
+```
+marxes = ['Groucho', 'Chico', 'Harpo']
+marxes[2] = 'Wanda'
+print(marxes[0], marxes[2])
+
+Groucho Wanda
+```
+负偏移量代表从尾部开始计数。
+
+指定的偏移量对于待访问列表必须有效，否则会报错。
+
+* 包含列表的列表
+
+```
+small_birds = ['humminhbird', 'finch']
+
+extinct_birds = ['dodo', 'passenger piggeon', 'Norwegian Blue']
+
+carol_birds = [3, 'Frennch hens', 2, 'turtledoves']
+
+all_birds = [small_birds, extinct_birds, 'macaw', carol_birds]
+
+print(all_birds)
+
+print(all_birds[0])
+
+print(all_birds[1][0])
+
+
+[['humminhbird', 'finch'], ['dodo', 'passenger piggeon', 'Norwegian Blue'], 'macaw', [3, 'Frennch hens', 2, 'turtledoves']]
+
+['humminhbird', 'finch']
+
+dodo
+```
+
+* 使用范围并使用切片提取元素 
+
+```
+marxes = ['Groucho', 'Chico', 'Harpo']
+
+print(marxes[0:2])      #步长为1
+
+print(marxes[0::2])     #步长为2
+
+#利用切片实现列表逆序
+
+print(marxes[ ::-1])
+
+
+['Groucho', 'Chico']
+
+['Groucho', 'Harpo']
+
+['Harpo', 'Chico', 'Groucho']
+
+
+```
+
+* 使用append()添加元素至尾部
+
+```
+marxes = ['Groucho', 'Chico', 'Harpo']
+
+marxes.append('Zeppo')
+
+print(marxes)
+
+
+['Groucho', 'Chico', 'Harpo', 'Zeppo']
+```
+
+* 使用extend()或者+=合并列表
+
+```
+marxes = ['Groucho', 'Chico', 'Harpo']
+
+other = ['Gummo','Karl']
+
+marxes.extend(other)        #使用marxes += other得到相同结果
+
+print(marxes)
+
+['Groucho', 'Chico', 'Harpo', 'Gummo', 'Karl']
+```
+
+* 使用insert()在指定位置插入元素
+
+```
+marxes = ['Groucho', 'Chico', 'Harpo']
+
+marxes.insert(2, 'Gummo')       #制定偏移量为0，可以插入列表头部，如果超过尾部，则会插入到列表最后
+
+print(marxes)
+
+```
+
+* 使用del删除指定位置的元素
+
+`marxes = ['Groucho', 'Chico', 'Harpo']`
+
+`del marxes[1]`
+
+当列表中的一个元素被删除后，位于它后面的元素会自动往前移动填补，且列表的长度减1
+
+* 使用remove()删除具有指定值的元素
+
+`marxes = ['Groucho', 'Chico', 'Harpo']`
+
+`marxes.remove('Harpo')`
+
+* 使用pop()获取并删除指定位置的元素
+
+如果指定了偏移量，则返回指定偏移量的值，否则默认为-1.
+
+```
+
+marxes = ['Groucho', 'Chico', 'Harpo']
+
+marxes.pop()
+
+print(marxes)
+
+print(marxes.pop())
+
+
+['Groucho', 'Chico']
+
+Chico
+```
+
+* 使用index()查询具有特定元素的位置
+
+```
+marxes = ['Groucho', 'Chico', 'Harpo']
+
+print(marxes.index('Chico'))
+
+1
+```
+
+* 使用in判断值是否存在
+
+```
+marxes = ['Groucho', 'Chico', 'Harpo']
+
+print('Chico' in marxes)
+
+True
+```
+
+* 使用count()记录特定值出现的次数
+
+```
+marxes = ['Groucho', 'Chico', 'Harpo']
+
+print(marxes.count('Chico'))
+```
+
