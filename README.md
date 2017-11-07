@@ -428,3 +428,34 @@ print('', a, '\n',b, '\n', c,'\n', d)
 ```
 
 在这个例子中，b，c，d都是a的复制：它们都是带有值的新对象，改变a的值，不影响b,c,d
+
+4. 元祖
+
+* 使用()创建元祖
+
+```
+empty_tuple = ()
+
+print(empty_tuple)
+
+()
+```
+创建包含一个或多个元素的元组时，每个元素后需要跟着一个逗号。
+
+可以一口气将元组赋值给多个变量
+```
+marx_tuple = ('Groucho', 'Chico', 'Harpo')
+
+print(marx_tuple)
+
+a, b, c = marx_tuple
+
+print(a, b, c)
+
+
+('Groucho', 'Chico', 'Harpo')
+
+Groucho Chico Harpo
+
+```
+
