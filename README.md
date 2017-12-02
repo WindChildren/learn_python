@@ -530,8 +530,11 @@ print('a' in lol)
 
 ```
 lol = {'a': 'b', 'c': 'd', 'e': 'f'}
+
 print(lol['a'])
+
 得到输出
+
 b
 ```
 
@@ -555,7 +558,7 @@ b
 6. 集合
 
 
-集合就像是舍弃了值，仅剩下键的字典一样，键和键之间不允许重复。
+集合就像是舍弃了值，仅剩下键的字典一样，键和键之间不允许重复。集合仅仅是一系列值组成的序列，而字典是一个或者多个键值对组成的序列。
 
 * 使用set()创建集合
 
@@ -565,7 +568,32 @@ b
 
 set()
 ```
+* 使用set()将其他类型转换为集合
 
+```
+>>>set('letters')
+
+{'l', 'e', 't', 'r', 's'}
+```
+
+* 使用in测试值是否存在
+```
+drinks = {
+
+    'martini': {'vodka', 'vermouth'},
+	
+    'black russian': {'vodka', 'kahlua'},
+	
+    'white russian': {'cream', 'kahlua'}
+	
+}
+
+for name, contents in drinks.items():
+
+    if 'vodka' in contents:
+	
+        print(name)
+```
 
 
 
