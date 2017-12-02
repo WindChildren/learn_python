@@ -565,33 +565,25 @@ b
 ```
 >>>empty_set = set()
 >>>empty_set
-
 set()
 ```
 * 使用set()将其他类型转换为集合
 
 ```
 >>>set('letters')
-
 {'l', 'e', 't', 'r', 's'}
 ```
 
 * 使用in测试值是否存在
 ```
 drinks = {
-
     'martini': {'vodka', 'vermouth'},
-	
     'black russian': {'vodka', 'kahlua'},
-	
     'white russian': {'cream', 'kahlua'}
-	
 }
 
 for name, contents in drinks.items():
-
     if 'vodka' in contents:
-	
         print(name)
 ```
 
