@@ -466,7 +466,9 @@ Groucho Chico Harpo
 
 ```
 >>>empty_dict = {}
+
 >>>empty_dict
+
 {}
 ```
 
@@ -476,7 +478,9 @@ Groucho Chico Harpo
 
 ```
 >>> lol = [ ['a', 'b'], ['c', 'd'], ['e', 'f'] ]
+
 >>> dict(lol)
+
 {'c': 'd', 'a': 'b', 'e': 'f'}
 
 ```
@@ -484,9 +488,13 @@ Groucho Chico Harpo
 
 ```
 lol = {'a': 'b', 'c': 'd', 'e': 'f'}
+
 lol['g'] = 'h'
+
 print(lol)
+
 得到输出
+
 {'a': 'b', 'c': 'd', 'e': 'f', 'g': 'h'}
 
 ```
@@ -546,6 +554,17 @@ b
 
 6. 集合
 
+
+集合就像是舍弃了值，仅剩下键的字典一样，键和键之间不允许重复。
+
+* 使用set()创建集合
+
+```
+>>>empty_set = set()
+>>>empty_set
+
+set()
+```
 
 
 
