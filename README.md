@@ -582,7 +582,33 @@ drinks = {
 for name, contents in drinks.items():
     if 'vodka' in contents:
         print(name)
+得到输出
+martini
+black russian
 ```
+* 合并及运算符
+	* 使用交集运算符&，intersection()获取集合的交集
+	* 使用  | 或者union()函数来获取集合的并集
+	* 使用 - 或者difference()可以获得两个集合的差集
+	* 使用 ^ 或者symmetric_difference()可以获得集合的异或集
+	* 使用<=或者issubset()可以判断一个集合是否是另一个集合的子集
+	* 使用<判断第一个集合是否为第二个集合的真子集
+
+7. 建立大型数据结构
+```
+marxes = ['Groucho', 'Chico', 'Harpo']
+pythons = ['Chapman', 'Cleese', 'Gilliam', 'Jones', 'Palin']
+stooges = ['Moe', 'Curly', 'Larry']
+#建立一个元组
+tuple_of_lists = marxes, pythons, stooges
+#建立一个列表
+list_of_lists = [marxes, pythons, stooges]
+#建立一个字典
+dict_of_lists = {'Marxes': marxes, 'Pythons': pythons, 'Stooges':stooges}
+```
+字典的键必须为不可变的对象，因此列表、字典以及集合都不能作为字典的键。
+
+
 
 
 
