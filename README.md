@@ -530,11 +530,8 @@ print('a' in lol)
 
 ```
 lol = {'a': 'b', 'c': 'd', 'e': 'f'}
-
 print(lol['a'])
-
 得到输出
-
 b
 ```
 
