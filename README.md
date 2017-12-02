@@ -459,6 +459,97 @@ Groucho Chico Harpo
 
 ```
 
+5. 字典
+
+字典中的元素顺序顺序无关紧要，每个元素对应不同的健。
+* 使用{}创建字典
+
+```
+>>>empty_dict = {}
+>>>empty_dict
+{}
+```
+
+* 使用dict()转换为字典
+
+可以对任何包含双值子序列的序列使用dict()
+
+```
+>>> lol = [ ['a', 'b'], ['c', 'd'], ['e', 'f'] ]
+>>> dict(lol)
+{'c': 'd', 'a': 'b', 'e': 'f'}
+
+```
+* 使用[key]添加或修改元素
+
+```
+lol = {'a': 'b', 'c': 'd', 'e': 'f'}
+lol['g'] = 'h'
+print(lol)
+得到输出
+{'a': 'b', 'c': 'd', 'e': 'f', 'g': 'h'}
+
+```
+
+* 使用update()合并字典
+
+```
+lol = {'a': 'b', 'c': 'd', 'e': 'f'}
+others = {'g':'h', 'i':'j'}
+lol.update(others)
+得到输出
+{'a': 'b', 'c': 'd', 'e': 'f', 'g': 'h', 'i': 'j'}
+```
+
+如果待添加的字典与待扩充的字典拥有相同的键，新归入字典的值会取代原来的值。
+
+* 使用del删除具有指定键元素的值
+
+'del lol['a']`
+
+* 使用clear()删除所有的元素
+
+`ol.clear()`
+
+* 使用in判断键是否存在
+
+```
+lol = {'a': 'b', 'c': 'd', 'e': 'f'}
+print('a' in lol)
+```
+
+* 使用[key]获取元素
+
+```
+lol = {'a': 'b', 'c': 'd', 'e': 'f'}
+print(lol['a'])
+得到输出
+b
+```
+
+* 使用keys获取所有键
+
+`lol.keys()`
+在python2中，keys会返回一个列表，在python3中则会返回dict_keys()，它是键的迭代形式
+
+* 使用values获取所有值
+
+`lol.values()`
+
+* 使用items()获取所有的键值对
+
+`lol.items()`
+
+在python3里需要手动使用list()将keys(), values(), 和items()的返回值转换为普通的python列表。
+
+* 使用=赋值，使用copy()复制
+
+6. 集合
+
+
+
+
+
 
 
 
