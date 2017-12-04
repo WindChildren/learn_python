@@ -608,6 +608,79 @@ dict_of_lists = {'Marxes': marxes, 'Pythons': pythons, 'Stooges':stooges}
 ```
 字典的键必须为不可变的对象，因此列表、字典以及集合都不能作为字典的键。
 
+## 第四章
+Python外壳：代码结构
+1. 使用#注释
+2. 使用\连接
+```
+a = 1 + 2 + \
+    3
+若
+a = 1 + 2 +
+会报错
+```
+3.使用if、elif和else进行比较
+
+```
+color = "puce"
+if color == "red":
+    print("It's a tomato")
+elif color == "green":
+    print("It's a green pepper")
+elif color == "bee purple":
+    print("I don't know what it is, but only bees can see it")
+else:
+    print("I've never heard of the color")
+得到输出
+I've never heard of the color
+```
+Python中比较操作符
+属于 in...
+相等 ==
+不等于 ！=
+一个等号为复制
+
+在Python中允许 5 < x < 10 这样操作，或者 5 < x and x <10
+* 在以下情况Python会认为是False
+	* 布尔         False
+	* null类型   None
+	* 整型   0
+	* 浮点型   0.0
+	* 空字符串    ''
+	* 空列表   []
+	* 空元组   ()
+	* 空字典   {}
+	* 空集合   set()
+
+剩下都会被认为是Ture
+4. 使用while进行循环
+
+```
+count = 1
+while count <= 5:
+    print(count)
+    count += 1
+得到输出
+1
+2
+3
+4
+5
+```
+	1. 使用break跳出循环
+	```
+	while True:
+    stuff = input("Sting to capitalize [type q to quit]: ")
+    if stuff == "q":
+        break
+        print(stuff.capitalize())
+	进行操作
+	Sting to capitalize [type q to quit]: test
+	Sting to capitalize [type q to quit]: hey, it works
+	Sting to capitalize [type q to quit]: q
+	```
+	2. 使用
+
 
 
 
