@@ -667,7 +667,7 @@ while count <= 5:
 4
 5
 ```
-	1. 使用break跳出循环
+*  使用break跳出循环
 	```
 	while True:
     stuff = input("Sting to capitalize [type q to quit]: ")
@@ -679,7 +679,25 @@ while count <= 5:
 	Sting to capitalize [type q to quit]: hey, it works
 	Sting to capitalize [type q to quit]: q
 	```
-	2. 使用
+* 使用continue跳到循环外
+```
+while True:
+    value = input("Integer, pleasr [q to quit]: ")
+    if value == "q": #停止循环
+        break
+    number = int(value)
+    if number % 2 == 0: #判断偶数
+        continue
+    print(number, "squared is", number*number)
+得到操作
+Integer, pleasr [q to quit]: 1
+1 squared is 1
+Integer, pleasr [q to quit]: 3
+3 squared is 9
+Integer, pleasr [q to quit]: 4
+Integer, pleasr [q to quit]: q
+```
+
 
 
 
