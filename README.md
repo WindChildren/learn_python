@@ -697,6 +697,96 @@ Integer, pleasr [q to quit]: 3
 Integer, pleasr [q to quit]: 4
 Integer, pleasr [q to quit]: q
 ```
+* 循环外使用else
+
+如果while循环正常结束（没有使用break跳出），程序将进入可选的else段
+5. 使用for迭代
+
+```
+rabbits = ['Flopsy', 'Mopsy', 'Cottontail', 'Peter']
+for rabbit in rabbits:
+    print(rabbit)
+得到输出
+Flopsy
+Mopsy
+Cottontail
+Peter
+```
+列表（rabbit）、字符串（letter）、元组、字典、集合等都是Python中可以迭代的对象。元组或者列表在一次迭代过程产生一项，字符串产生一个字符。
+
+对于字典（card）则会返回字典中的键，如果想对字典的值进行迭代，可以用字典的values()函数：
+`for value in accusation.values()`
+以元组形式返回键值对，可以使用字典的items()函数：
+`for item in accusation.items()`
+* 在python中，使用break、continue、循环外使用else和while是一样的。
+* 使用zip()并行迭代
+
+```
+days = ['Monday', 'Tuesday', 'Wednesday']
+fruits = ['banana', 'orange', 'peach']
+drinks = ['coffee', 'tea', 'beer']
+desserts = ['tiramisu', 'ice cream', 'pie', 'pudding']
+for day, fruit, drink, dessert in zip(days, fruits, drinks, desserts):
+    print(day, ":drink", drink, "-eat", fruit, "-enjoy", dessert)
+得到输出
+Monday :drink coffee -eat banana -enjoy tiramisu
+Tuesday :drink tea -eat orange -enjoy ice cream
+Wednesday :drink beer -eat peach -enjoy pie
+```
+* zip()函数在最短序列“用完”时就会停止，使用zip()函数配对两个元组，函数返回值既不是元组也不是列表，而是一个整合在一起的可迭代变量：
+```
+english = 'Monday', 'Tuesday' 'Wednesday'
+french = 'Lundi', 'Mardi', 'Mercredi'
+print(list(zip(english,french)))
+得到输出
+[('Monday', 'Lundi'), ('Tuesday', 'Mardi'), ('Wednesday', 'Mercredi')]
+```
+* 配合dict()函数和zip()函数的返回值可以得到一本英法词典：
+```
+print(dict(zip(english,french)))
+{'Monday': 'Lundi', 'Tuesday': 'Mardi', 'Wednesday': 'Mercredi'}
+```
+* 使用range()生成自然数序列
+
+range(start, stop, step):start默认值为0，唯一要求参数值stop，为产生的最后一个数的前一个，step默认值为1，若反向创建自然数序列，这时step的值为-1.
+```
+for x in range(0, 3):
+    print(x)
+...
+0
+1
+2
+
+print(list(range(2, -1, -1)))
+...
+[2, 1, 0]
+
+得到0到10的偶数：
+print(list(range(0, 11, 2)))
+...
+[0, 2, 4, 6, 8, 10]
+```
+6. 推导式
+
+* 列表推导式
+
+每次往列表添加一项：
+```
+number_list = []
+number_list .append(1)
+number_list .append(2)
+```
+或者结合range()函数使用一个迭代器：
+```
+number_list = []
+for number in range(1, 6):
+    number_list.append(number)
+print(number_list)
+...
+[1, 2, 3, 4, 5]
+```
+或者直接把range()的返回结果放到一个列表里：
+`number_list = list(range(1, 6))`
 
 
 
