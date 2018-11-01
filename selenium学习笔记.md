@@ -127,8 +127,38 @@ finally:
 
 # 查找UI元素
 
+* java
+
+```
+WebElement element = driver.findElement(By.id("coolestWidgetEvah"));
 
 
+List<WebElement> cheeses = driver.findElements(By.className("cheese"));
+
+
+
+
+```
+
+* python
+
+```
+element = driver.find_element_by_id("coolestWidgetEvah")
+
+or
+
+from selenium.webdriver.common.by import By
+element = driver.find_element(by=By.ID, value="coolestWidgetEvah")
+
+
+cheeses = driver.find_elements_by_class_name("cheese")
+
+or
+
+from selenium.webdriver.common.by import By
+cheeses = driver.find_elements(By.CLASS_NAME, "cheese")
+
+```
 
 
 
