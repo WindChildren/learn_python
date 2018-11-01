@@ -131,6 +131,8 @@ finally:
 
 ```
 WebElement element = driver.findElement(By.id("coolestWidgetEvah"));
+//获取文本内容
+element.getText();
 
 List<WebElement> cheeses = driver.findElements(By.className("cheese"));
 
@@ -152,6 +154,8 @@ element = driver.find_element_by_id("coolestWidgetEvah")
 or
 from selenium.webdriver.common.by import By
 element = driver.find_element(by=By.ID, value="coolestWidgetEvah")
+#获取文本内容
+element.text()
 
 cheeses = driver.find_elements_by_class_name("cheese")
 or
@@ -185,10 +189,9 @@ inputs = driver.find_elements(By.XPATH, "//input")
 ```
 
 * 执行js查找元素
-java
 
+	* java
 `WebElement element = (WebElement) ((JavascriptExecutor)driver).executeScript("return $('.cheese')[0]");`
-
 查找页面上每个标签的所有输入元素
 ```
 List<WebElement> labels = driver.findElements(By.tagName("label"));
@@ -196,11 +199,8 @@ List<WebElement> inputs = (List<WebElement>) ((JavascriptExecutor)driver).execut
     "var labels = arguments[0], inputs = []; for (var i=0; i < labels.length; i++){" +
     "inputs.push(document.getElementById(labels[i].getAttribute('for'))); } return inputs;", labels);
 ``` 
-
-python
-
+	* python
 `element = driver.execute_script("return $('.cheese')[0]")`
-
 查找页面上每个标签的所有输入元素
 ```
 labels = driver.find_elements_by_tag_name("label")
@@ -209,7 +209,13 @@ inputs = driver.execute_script(
     "inputs.push(document.getElementById(labels[i].getAttribute('for'))); } return inputs;", labels)
 ```
 
-* 获取文本内容
+* 点击方法
+
+	* java
+`driver.findElement(By.id("submit")).click();`
+
+	* python
+`driver.find_element_by_id("submit").click()`
 
 
 
