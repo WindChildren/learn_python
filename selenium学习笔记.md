@@ -190,7 +190,8 @@ inputs = driver.find_elements(By.XPATH, "//input")
 
 * 执行js查找元素
 
-	* java
+ java
+
 `WebElement element = (WebElement) ((JavascriptExecutor)driver).executeScript("return $('.cheese')[0]");`
 查找页面上每个标签的所有输入元素
 ```
@@ -199,7 +200,8 @@ List<WebElement> inputs = (List<WebElement>) ((JavascriptExecutor)driver).execut
     "var labels = arguments[0], inputs = []; for (var i=0; i < labels.length; i++){" +
     "inputs.push(document.getElementById(labels[i].getAttribute('for'))); } return inputs;", labels);
 ``` 
-	* python
+python
+
 `element = driver.execute_script("return $('.cheese')[0]")`
 查找页面上每个标签的所有输入元素
 ```
