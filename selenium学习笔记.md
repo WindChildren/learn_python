@@ -34,8 +34,8 @@ grammar_cjkRuby: true
 pip install selenium
 ```
 
-# webdriver例子
-
+# webdriver
+## 例子
 * java
 
 ```
@@ -125,7 +125,7 @@ finally:
     driver.quit()
 ```
 
-# 查找UI元素
+## 查找UI元素
 
 * java
 
@@ -191,7 +191,6 @@ inputs = driver.find_elements(By.XPATH, "//input")
 * 执行js查找元素
 
  java
-
 `WebElement element = (WebElement) ((JavascriptExecutor)driver).executeScript("return $('.cheese')[0]");`
 查找页面上每个标签的所有输入元素
 ```
@@ -200,8 +199,8 @@ List<WebElement> inputs = (List<WebElement>) ((JavascriptExecutor)driver).execut
     "var labels = arguments[0], inputs = []; for (var i=0; i < labels.length; i++){" +
     "inputs.push(document.getElementById(labels[i].getAttribute('for'))); } return inputs;", labels);
 ``` 
-python
 
+python
 `element = driver.execute_script("return $('.cheese')[0]")`
 查找页面上每个标签的所有输入元素
 ```
@@ -213,20 +212,137 @@ inputs = driver.execute_script(
 
 * 点击方法
 
-	* java
+ java
+ 
 `driver.findElement(By.id("submit")).click();`
 
-	* python
+ python
+ 
 `driver.find_element_by_id("submit").click()`
 
+* 弹窗切换跳转
 
+java
 
+`driver.switchTo().window("windowName");`
 
+python
 
+`driver.switch_to.window("windowName")`
 
+也可以利用switch进行窗口和弹框切换，改为“frame”或“alert”即可。
 
+在Java中：
+`driver.navigate().to("http://www.example.com");`
+与
+`driver.get("http://www.example.com")`
+等效，在python中没有这个方法
 
+## Cookies使用
 
+* java
+
+```
+// Go to the correct domain
+driver.get("http://www.example.com");
+
+// Now set the cookie. This one's valid for the entire domain
+Cookie cookie = new Cookie("key", "value");
+driver.manage().addCookie(cookie);
+
+// And now output all the available cookies for the current URL
+Set<Cookie> allCookies = driver.manage().getCookies();
+for (Cookie loadedCookie : allCookies) {
+    System.out.println(String.format("%s -> %s", loadedCookie.getName(), loadedCookie.getValue()));
+}
+
+// You can delete cookies in 3 ways
+// By name
+driver.manage().deleteCookieNamed("CookieName");
+// By Cookie
+driver.manage().deleteCookie(loadedCookie);
+// Or all of them
+driver.manage().deleteAllCookies();
+```
+
+* python
+
+```
+# Go to the correct domain
+driver.get("http://www.example.com")
+
+# Now set the cookie. Here's one for the entire domain
+# the cookie name here is 'key' and its value is 'value'
+driver.add_cookie({'name':'key', 'value':'value', 'path':'/'})
+# additional keys that can be passed in are:
+# 'domain' -> String,
+# 'secure' -> Boolean,
+# 'expiry' -> Milliseconds since the Epoch it should expire.
+
+# And now output all the available cookies for the current URL
+for cookie in driver.get_cookies():
+    print "%s -> %s" % (cookie['name'], cookie['value'])
+
+# You can delete cookies in 2 ways
+# By name
+driver.delete_cookie("CookieName")
+# Or all of them
+driver.delete_all_cookies()
+```
+## 拖放事件
+
+* java
+
+```
+WebElement element = driver.findElement(By.name("source"));
+WebElement target = driver.findElement(By.name("target"));
+
+(new Actions(driver)).dragAndDrop(element, target).perform();
+```
+
+* python
+
+```
+from selenium.webdriver.common.action_chains import ActionChains
+element = driver.find_element_by_name("source")
+target =  driver.find_element_by_name("target")
+
+ActionChains(driver).drag_and_drop(element, target).perform()
+```
+
+# WebDriver’s Drivers
+## HtmlUnit Driver
+This is currently the fastest and most lightweight implementation of WebDriver. As the name suggests, this is based on HtmlUnit. HtmlUnit is a java based implementation of a WebBrowser without a GUI. For any language binding (other than java) the Selenium Server is required to use this driver.
+* java
+
+`WebDriver driver = new HtmlUnitDriver();`
+
+* python
+
+`driver = webdriver.Remote("http://localhost:4444/wd/hub", webdriver.DesiredCapabilities.HTMLUNIT.copy())`
+
+## Firefox Driver
+* java
+
+`WebDriver driver = new FirefoxDriver();`
+一般默认会去找默认安装的C盘位置，如果不在，则自己指定告诉火狐浏览器位置
+`System.setProperty("webdriver.firefox.bin","D:\\Firefox\\firefox.exe");`
+
+设置配置文件
+```
+// 设置是否询问下载位置（可忽略）；默认true——不询问，直接下载到指定路径，具体设置见browser.folderList，false——询问
+profile.setPreference("browser.download.useDownloadDir",true);
+// 指定下载位置
+profile.setPreference("browser.download.downloadDir", "c:\\OutputFolder");
+// 设置下载方式；0——下载到桌面，默认1——下载到Firefox默认位置，2——下载到指定位置
+profile.setPreference("browser.download.folderList", 2);
+// 当一个下载开始时，设置是否显示下载管理器；默认true——显示，flase——不显示
+profile.setPreference("browser.download.manager.showWhenStarting",false);
+```
+
+* python 
+
+`driver = webdriver.Firefox()`
 
 
 
