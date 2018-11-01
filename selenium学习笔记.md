@@ -132,33 +132,92 @@ finally:
 ```
 WebElement element = driver.findElement(By.id("coolestWidgetEvah"));
 
-
 List<WebElement> cheeses = driver.findElements(By.className("cheese"));
 
+WebElement frame = driver.findElement(By.tagName("iframe"));
 
+WebElement cheese = driver.findElement(By.name("cheese"));
 
+WebElement cheese = driver.findElement(By.linkText("cheese"));
 
+WebElement cheese = driver.findElement(By.cssSelector("#food span.dairy.aged"));
+
+List<WebElement> inputs = driver.findElements(By.xpath("//input"));
 ```
 
 * python
 
 ```
 element = driver.find_element_by_id("coolestWidgetEvah")
-
 or
-
 from selenium.webdriver.common.by import By
 element = driver.find_element(by=By.ID, value="coolestWidgetEvah")
 
-
 cheeses = driver.find_elements_by_class_name("cheese")
-
 or
-
 from selenium.webdriver.common.by import By
 cheeses = driver.find_elements(By.CLASS_NAME, "cheese")
 
+frame = driver.find_element_by_tag_name("iframe")
+or
+from selenium.webdriver.common.by import By
+frame = driver.find_element(By.TAG_NAME, "iframe")
+
+cheese = driver.find_element_by_name("cheese")
+or
+from selenium.webdriver.common.by import By
+cheese = driver.find_element(By.NAME, "cheese"
+
+cheese = driver.find_element_by_link_text("cheese")
+or
+from selenium.webdriver.common.by import By
+cheese = driver.find_element(By.LINK_TEXT, "cheese")
+
+cheese = driver.find_element_by_css_selector("#food span.dairy.aged")
+or
+from selenium.webdriver.common.by import By
+cheese = driver.find_element(By.CSS_SELECTOR, "#food span.dairy.aged")
+
+inputs = driver.find_elements_by_xpath("//input")
+or
+from selenium.webdriver.common.by import By
+inputs = driver.find_elements(By.XPATH, "//input")
 ```
+
+* 执行js查找元素
+	* java
+`WebElement element = (WebElement) ((JavascriptExecutor)driver).executeScript("return $('.cheese')[0]");`
+
+查找页面上每个标签的所有输入元素
+```
+List<WebElement> labels = driver.findElements(By.tagName("label"));
+List<WebElement> inputs = (List<WebElement>) ((JavascriptExecutor)driver).executeScript(
+    "var labels = arguments[0], inputs = []; for (var i=0; i < labels.length; i++){" +
+    "inputs.push(document.getElementById(labels[i].getAttribute('for'))); } return inputs;", labels);
+```
+	* python 
+`element = driver.execute_script("return $('.cheese')[0]")`
+
+查找页面上每个标签的所有输入元素
+```
+labels = driver.find_elements_by_tag_name("label")
+inputs = driver.execute_script(
+    "var labels = arguments[0], inputs = []; for (var i=0; i < labels.length; i++){" +
+    "inputs.push(document.getElementById(labels[i].getAttribute('for'))); } return inputs;", labels)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
