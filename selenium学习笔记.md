@@ -192,6 +192,7 @@ inputs = driver.find_elements(By.XPATH, "//input")
 
  java
 `WebElement element = (WebElement) ((JavascriptExecutor)driver).executeScript("return $('.cheese')[0]");`
+
 查找页面上每个标签的所有输入元素
 ```
 List<WebElement> labels = driver.findElements(By.tagName("label"));
@@ -202,6 +203,7 @@ List<WebElement> inputs = (List<WebElement>) ((JavascriptExecutor)driver).execut
 
 python
 `element = driver.execute_script("return $('.cheese')[0]")`
+
 查找页面上每个标签的所有输入元素
 ```
 labels = driver.find_elements_by_tag_name("label")
