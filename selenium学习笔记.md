@@ -344,6 +344,211 @@ profile.setPreference("browser.download.manager.showWhenStarting",false);
 
 `driver = webdriver.Firefox()`
 
+# 隐式和显式等待
+
+在继续下一步之前，等待使自动化任务执行经过一定时间。您应该选择使用显式等待或隐式等待。
+
+## 显式等待
+
+* java
+
+```
+WebDriver driver = new FirefoxDriver();
+driver.get("http://somedomain/url_that_delays_loading");
+WebElement myDynamicElement = (new WebDriverWait(driver, 10))
+  .until(ExpectedConditions.presenceOfElementLocated(By.id("myDynamicElement")));
+```
+
+* python
+```
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait # available since 2.4.0
+from selenium.webdriver.support import expected_conditions as EC # available since 2.26.0
+
+ff = webdriver.Firefox()
+ff.get("http://somedomain/url_that_delays_loading")
+try:
+    element = WebDriverWait(ff, 10).until(EC.presence_of_element_located((By.ID, "myDynamicElement")))
+finally:
+    ff.quit()
+```
+
+## 隐式等待
+* java
+
+```WebDriver driver = new FirefoxDriver();
+driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+driver.get("http://somedomain/url_that_delays_loading");
+WebElement myDynamicElement = driver.findElement(By.id("myDynamicElement"));
+```
+
+* python
+
+```from selenium import webdriver
+
+ff = webdriver.Firefox()
+ff.implicitly_wait(10) # seconds
+ff.get("http://somedomain/url_that_delays_loading")
+myDynamicElement = ff.find_element_by_id("myDynamicElement")
+```
+
+# 截取屏幕截图
+
+* java
+
+```
+import java.io.File;
+import java.net.URL;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.Augmenter;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+public class Testing {
+    
+    public void myTest() throws Exception {
+        WebDriver driver = new RemoteWebDriver(
+                                new URL("http://localhost:4444/wd/hub"), 
+                                DesiredCapabilities.firefox());
+        
+        driver.get("http://www.google.com");
+        
+        // RemoteWebDriver does not implement the TakesScreenshot class
+        // if the driver does have the Capabilities to take a screenshot
+        // then Augmenter will add the TakesScreenshot methods to the instance
+        WebDriver augmentedDriver = new Augmenter().augment(driver);
+        File screenshot = ((TakesScreenshot)augmentedDriver).
+                            getScreenshotAs(OutputType.FILE);
+    }
+}
+```
+
+* python
+
+```
+from selenium import webdriver
+
+driver = webdriver.Remote("http://localhost:4444/wd/hub", webdriver.DesiredCapabilities.FIREFOX.copy())
+driver.get("http://www.google.com")
+driver.get_screenshot_as_file('/Screenshots/google.png')
+```
+
+# 浏览器启动操作
+
+## 使用代理
+### IE浏览器
+
+* java
+
+```
+String PROXY = "localhost:8080";
+
+org.openqa.selenium.Proxy proxy = new org.openqa.selenium.Proxy();
+proxy.setHttpProxy(PROXY)
+     .setFtpProxy(PROXY)
+     .setSslProxy(PROXY);
+DesiredCapabilities cap = new DesiredCapabilities();
+cap.setCapability(CapabilityType.PROXY, proxy);
+
+WebDriver driver = new InternetExplorerDriver(cap);
+```
+* python
+
+```
+from selenium import webdriver
+
+PROXY = "localhost:8080"
+
+# Create a copy of desired capabilities object.
+desired_capabilities = webdriver.DesiredCapabilities.INTERNETEXPLORER.copy()
+# Change the proxy properties of that copy.
+desired_capabilities['proxy'] = {
+    "httpProxy":PROXY,
+    "ftpProxy":PROXY,
+    "sslProxy":PROXY,
+    "noProxy":None,
+    "proxyType":"MANUAL",
+    "class":"org.openqa.selenium.Proxy",
+    "autodetect":False
+}
+
+# you have to use remote, otherwise you'll have to code it yourself in python to 
+# dynamically changing the system proxy preferences
+driver = webdriver.Remote("http://localhost:4444/wd/hub", desired_capabilities)
+```
+
+### chorme
+使用方法基本与IE浏览器相同
+
+### Firefox up to version 47.0.1
+
+* java
+
+```
+String PROXY = "localhost:8080";
+
+org.openqa.selenium.Proxy proxy = new org.openqa.selenium.Proxy();
+proxy.setHttpProxy(PROXY)
+     .setFtpProxy(PROXY)
+     .setSslProxy(PROXY);
+DesiredCapabilities cap = new DesiredCapabilities();
+cap.setCapability(CapabilityType.PROXY, proxy);
+WebDriver driver = new FirefoxDriver(cap);
+```
+Firefox version 48 and newer - GeckoDriver
+```
+String PROXY = "localhost";
+int PORT = 8080;
+
+com.google.gson.JsonObject json = new com.google.gson.JsonObject();
+json.addProperty("proxyType", "MANUAL");
+json.addProperty("httpProxy", PROXY);
+json.addProperty("httpProxyPort", PORT);
+json.addProperty("sslProxy", PROXY);
+json.addProperty("sslProxyPort", PORT);
+
+DesiredCapabilities cap = new DesiredCapabilities();
+cap.setCapability("proxy", json);
+
+GeckoDriverService service =new GeckoDriverService.Builder(firefoxBinary)
+  .usingDriverExecutable(new File("path to geckodriver"))
+  .usingAnyFreePort()
+  .usingAnyFreePort()
+  .build();
+service.start();
+
+// GeckoDriver currently needs the Proxy set in RequiredCapabilities
+driver = new FirefoxDriver(service, cap, cap);
+```
+* python 
+
+```
+from selenium import webdriver
+from selenium.webdriver.common.proxy import *
+
+myProxy = "host:8080"
+
+proxy = Proxy({
+    'proxyType': ProxyType.MANUAL,
+    'httpProxy': myProxy,
+    'ftpProxy': myProxy,
+    'sslProxy': myProxy,
+    'noProxy': '' # set this value as desired
+    })
+
+driver = webdriver.Firefox(proxy=proxy)
+
+# for remote
+caps = webdriver.DesiredCapabilities.FIREFOX.copy()
+proxy.add_to_capabilities(caps)
+
+driver = webdriver.Remote(desired_capabilities=caps)
+```
+
 
 
 
